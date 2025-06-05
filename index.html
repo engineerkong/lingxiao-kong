@@ -33,7 +33,7 @@
         }
         .project {
             flex: 0 0 350px; /* 固定宽度 */
-            height: 400px; /* 固定高度 */
+            height: 500px; /* 固定高度 */
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -95,18 +95,24 @@
         .project__stack {
             list-style: none;
             padding: 0;
-            margin: 0 0 16px 0;
+            margin: 0;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: auto; /* 推到底部 */
+            margin-bottom: 16px;
         }
+
         .project__stack-item {
             background: #f3f4f6;
             color: #374151;
-            padding: 4px 12px;
+            padding: 6px 12px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 500;
+            text-align: center;
+            width: fit-content;
+            align-self: flex-start;
         }
         .project-links {
             display: flex;
