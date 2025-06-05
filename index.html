@@ -15,6 +15,180 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .projects-slider {
+            position: relative;
+            width: 100%;
+        }
+        .projects-wrapper {
+            display: flex;
+            transition: transform 0.3s ease;
+            gap: 20px;
+        }
+        .project {
+            flex: 0 0 350px; /* 固定宽度 */
+            height: 400px; /* 固定高度 */
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .project:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        .project h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 16px 0;
+            color: #1f2937;
+            line-height: 1.4;
+            height: 75px; /* 固定标题高度 */
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+        .project__description {
+            flex: 1;
+            margin: 0 0 16px 0;
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+        .description-content {
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+        }
+        .description-content.collapsed {
+            max-height: 90px; /* 大约4行文字 */
+        }
+        .description-content.expanded {
+            max-height: 200px;
+        }
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: #3b82f6;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 4px 0;
+            text-decoration: underline;
+            margin-top: 8px;
+        }
+        .read-more-btn:hover {
+            color: #2563eb;
+        }
+        .project__stack {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .project__stack-item {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .project-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: auto;
+        }
+        .link {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.2s ease;
+        }
+        .link:hover {
+            color: #3b82f6;
+        }
+        /* 导航按钮 */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+        .nav-btn:hover {
+            background: #f9fafb;
+            border-color: #d1d5db;
+        }
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .nav-btn.prev {
+            left: -20px;
+        }
+        .nav-btn.next {
+            right: -20px;
+        }
+        /* 指示器 */
+        .slider-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d1d5db;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .indicator.active {
+            background: #3b82f6;
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .project {
+                flex: 0 0 280px;
+                height: 380px;
+            }
+            .nav-btn {
+                display: none;
+            }
+        }
+        @media (max-width: 480px) {
+            .project {
+                flex: 0 0 260px;
+            }
+        }
+    </style>
     <title>Lingxiao Kong</title>
   </head>
   <body class="light" id="top">
@@ -100,84 +274,93 @@
       <section id="publications" class="section publications">
         <h2 class="section__title">Publications</h2>
 
-        <div class="projects__grid">
-          <div class="project">
-            <h3>A Unified Framework for Cultural Heritage Data Historicity and Migration: 
-              The ARGUS Approach</h3>
-            <p class="project__description">
-              We describe a systematic data processing pipeline encompassing standardization, 
-              enrichment, integration, visualization, ingestion, and publication strategies. 
-              The framework transforms raw, disparate datasets into standardized formats compliant 
-              with FAIR principles. (Accepted by IEEE-CH 2025 ARGUS workshop) 
-            </p>
-            <ul class="project__stack">
-              <li class="project__stack-item">data processing</li>
-              <li class="project__stack-item">LLM querying</li>
-              <li class="project__stack-item">cultural heritage data</li>
-            </ul>
-            </a>
-            <a
-              href="https://www.ieee-ch.org/"
-              aria-label="live preview"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-          <div class="project">
-            <h3>EMORL: Ensemble Multi-Objective Reinforcement Learning for Efficient and 
-              Flexible LLM Fine-Tuning</h3>
-            <p class="project__description">
-              Leveraging ensemble learning principles, we introduce an Ensemble Multi-Objective 
-              RL (EMORL) framework that fine-tunes multiple models with individual objectives 
-              while optimizing their aggregation after the training to improve efficiency and 
-              flexibility. (Submitted to SIGDIAL 2025 main track and preprinted)
-            </p>
-            <ul class="project__stack">
-              <li class="project__stack-item">multi-objective optimization</li>
-              <li class="project__stack-item">Reinforcement Learning</li>
-              <li class="project__stack-item">Large Language Model</li>
-            </ul>
-
-            <a
-              href="https://github.com/engineerkong/EMORL"
-              aria-label="source code"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fab fa-github"></i>
-            </a>
-            <a
-              href="https://arxiv.org/abs/2505.02579"
-              aria-label="live preview"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
-          <div class="project">
-            <h3>Understanding Open Source Large Language Models: An Exploratory Study</h3>
-            <p class="project__description">
-              This study investigates Open Source Large Language Models (OSLLMs), exploring their 
-              characteristics, openness, and community interactions. Our research aims to define 
-              OSLLMs (license, openness, community engagement). Utilizing data from the Hugging Face 
-              platform, we examine the popularity metrics, license distribution, artefact accessibilities 
-              and community engagement of LLM projects. (Accepted by FLLM 2024 main track)
-            </p>
-            <ul class="project__stack">
-              <li class="project__stack-item">Data Analysis</li>
-              <li class="project__stack-item">Open Source Characteristics</li>
-              <li class="project__stack-item">Large Language Model</li>
-            </ul>
-
-            </a>
-            <a
-              href="https://ieeexplore.ieee.org/abstract/document/10852438"
-              aria-label="live preview"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
+        <div class="projects-container">
+          <div class="projects-slider">
+            <button class="nav-btn prev" onclick="slideProjects(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>  
+            
+            <div class="projects-wrapper" id="projectsWrapper">
+              <div class="project">
+                <h3>A Unified Framework for Cultural Heritage Data Historicity and Migration: 
+                  The ARGUS Approach</h3>
+                <div class="project__description">
+                  <div class="description-content collapsed" id="desc1">
+                  We describe a systematic data processing pipeline encompassing standardization, 
+                  enrichment, integration, visualization, ingestion, and publication strategies. 
+                  The framework transforms raw, disparate datasets into standardized formats compliant 
+                  with FAIR principles.
+                  </div>
+                  <button class="read-more-btn" onclick="toggleDescription('desc1', this)">Read more</button>
+                  <p style="font-size: 12px; color: #9ca3af; margin-top: 8px;">(Accepted by IEEE-CH 2025 ARGUS workshop)</p>
+                </div>
+                <ul class="project__stack">
+                  <li class="project__stack-item">Data Processing</li>
+                  <li class="project__stack-item">LLM Querying</li>
+                  <li class="project__stack-item">Cultural Heritage Data</li>
+                </ul>
+                <div class="project-links">
+                  <a href="https://www.ieee-ch.org/" aria-label="live preview" class="link">
+                    <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <div class="project">
+                <h3>EMORL: Ensemble Multi-Objective Reinforcement Learning for Efficient and 
+                  Flexible LLM Fine-Tuning</h3>
+                <div class="project__description">
+                  <div class="description-content collapsed" id="desc1">
+                  Leveraging ensemble learning principles, we introduce an Ensemble Multi-Objective 
+                  RL (EMORL) framework that fine-tunes multiple models with individual objectives 
+                  while optimizing their aggregation after the training to improve efficiency and 
+                  flexibility.
+                  </div>
+                  <button class="read-more-btn" onclick="toggleDescription('desc1', this)">Read more</button>
+                  <p style="font-size: 12px; color: #9ca3af; margin-top: 8px;">(Submitted to SIGDIAL 2025 main track and preprinted)</p>
+                </div>
+                <ul class="project__stack">
+                  <li class="project__stack-item">Multi-Objective Optimization</li>
+                  <li class="project__stack-item">Reinforcement Learning</li>
+                  <li class="project__stack-item">Large Language Model</li>
+                </ul>
+                <div class="project-links">
+                  <a href="https://github.com/engineerkong/EMORL" aria-label="source code" class="link link--icon">
+                    <i aria-hidden="true" class="fab fa-github"></i>
+                  </a>
+                </div>
+                <div class="project-links">
+                  <a href="https://arxiv.org/abs/2505.02579" aria-label="live preview" class="link link--icon">
+                    <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <div class="project">
+                <h3>Understanding Open Source Large Language Models: An Exploratory Study</h3>
+                <div class="project__description">
+                  <div class="description-content collapsed" id="desc1">
+                  This study investigates Open Source Large Language Models (OSLLMs), exploring their 
+                  characteristics, openness, and community interactions. Our research aims to define 
+                  OSLLMs (license, openness, community engagement). Utilizing data from the Hugging Face 
+                  platform, we examine the popularity metrics, license distribution, artefact accessibilities 
+                  and community engagement of LLM projects.
+                  </div>
+                  <button class="read-more-btn" onclick="toggleDescription('desc1', this)">Read more</button>
+                  <p style="font-size: 12px; color: #9ca3af; margin-top: 8px;">(Accepted by FLLM 2024 main track)</p>
+                </div>
+                <ul class="project__stack">
+                  <li class="project__stack-item">Data Processing</li>
+                  <li class="project__stack-item">Sentiment Analysis</li>
+                  <li class="project__stack-item">Large Language Model</li>
+                </ul>
+                <div class="project-links">
+                  <a href="https://ieeexplore.ieee.org/abstract/document/10852438" aria-label="live preview" class="link link--icon">
+                    <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+              
         </div>
       </section>
 
@@ -355,5 +538,132 @@
     </div>
 
     <script src="./script.js"></script>
+
+    <script>
+        let currentSlide = 0;
+        const projectsWrapper = document.getElementById('projectsWrapper');
+        const projects = document.querySelectorAll('.project');
+        const totalProjects = projects.length;
+        const projectWidth = 370; // 350px width + 20px gap
+
+        // 创建指示器
+        function createIndicators() {
+            const indicatorsContainer = document.getElementById('indicators');
+            const maxVisible = Math.floor(window.innerWidth / projectWidth);
+            const totalPages = Math.ceil(totalProjects / maxVisible);
+            
+            indicatorsContainer.innerHTML = '';
+            for (let i = 0; i < totalPages; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (i === 0) indicator.classList.add('active');
+                indicator.onclick = () => goToSlide(i);
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        // 滑动到指定slide
+        function goToSlide(slideIndex) {
+            const maxVisible = Math.floor(window.innerWidth / projectWidth);
+            const maxSlide = Math.ceil(totalProjects / maxVisible) - 1;
+            
+            currentSlide = Math.max(0, Math.min(slideIndex, maxSlide));
+            const translateX = -currentSlide * projectWidth * maxVisible;
+            
+            projectsWrapper.style.transform = `translateX(${translateX}px)`;
+            updateIndicators();
+            updateNavButtons();
+        }
+
+        // 滑动项目
+        function slideProjects(direction) {
+            goToSlide(currentSlide + direction);
+        }
+
+        // 更新指示器
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // 更新导航按钮状态
+        function updateNavButtons() {
+            const prevBtn = document.querySelector('.nav-btn.prev');
+            const nextBtn = document.querySelector('.nav-btn.next');
+            const maxVisible = Math.floor(window.innerWidth / projectWidth);
+            const maxSlide = Math.ceil(totalProjects / maxVisible) - 1;
+            
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide >= maxSlide;
+        }
+
+        // 切换描述展开/折叠
+        function toggleDescription(descId, button) {
+            const descElement = document.getElementById(descId);
+            const isCollapsed = descElement.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                descElement.classList.remove('collapsed');
+                descElement.classList.add('expanded');
+                button.textContent = 'Read less';
+            } else {
+                descElement.classList.remove('expanded');
+                descElement.classList.add('collapsed');
+                button.textContent = 'Read more';
+            }
+        }
+
+        // 键盘导航
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                slideProjects(-1);
+            } else if (e.key === 'ArrowRight') {
+                slideProjects(1);
+            }
+        });
+
+        // 触摸滑动支持
+        let startX = 0;
+        let isDragging = false;
+
+        projectsWrapper.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        projectsWrapper.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+
+        projectsWrapper.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            
+            const endX = e.changedTouches[0].clientX;
+            const diffX = startX - endX;
+            
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    slideProjects(1);
+                } else {
+                    slideProjects(-1);
+                }
+            }
+            
+            isDragging = false;
+        });
+
+        // 响应式处理
+        window.addEventListener('resize', () => {
+            createIndicators();
+            goToSlide(0);
+        });
+
+        // 初始化
+        createIndicators();
+        updateNavButtons();
+    </script>
   </body>
 </html>
