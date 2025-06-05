@@ -33,7 +33,7 @@
         }
         .project {
             flex: 0 0 350px; /* 固定宽度 */
-            height: 500px; /* 固定高度 */
+            height: 400px; /* 固定高度 */
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -61,36 +61,16 @@
             -webkit-box-orient: vertical;
         }
         .project__description {
-            flex: 1;
             margin: 0 0 16px 0;
             color: #6b7280;
             line-height: 1.6;
             font-size: 14px;
-            position: relative;
             overflow: hidden;
-        }
-        .description-content {
-            transition: max-height 0.3s ease;
-            overflow: hidden;
-        }
-        .description-content.collapsed {
-            max-height: 90px; /* 大约4行文字 */
-        }
-        .description-content.expanded {
-            max-height: 200px;
-        }
-        .read-more-btn {
-            background: none;
-            border: none;
-            color: #3b82f6;
-            cursor: pointer;
-            font-size: 12px;
-            padding: 4px 0;
-            text-decoration: underline;
-            margin-top: 8px;
-        }
-        .read-more-btn:hover {
-            color: #2563eb;
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* 显示4行文字 */
+            -webkit-box-orient: vertical;
+            height: 88px; /* 固定高度，大约4行 */
+            text-overflow: ellipsis;
         }
         .project__stack {
             list-style: none;
