@@ -48,6 +48,20 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
+        .project2 {
+            flex: 0 0 350px; /* 固定宽度 */
+            height: 200px; /* 增加高度以适应内容 */
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
         .project:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -403,59 +417,51 @@
         <h2 class="section__title">Contributions</h2>
 
         <div class="projects__grid">
-          <div class="project">
+          <div class="project2">
             <h3>WILLEY-VCH Journal Co-review</h3>
             <p class="project__description">
             </p>
-            <a
-              href="https://www.wiley-vch.de/en"
-              aria-label="live preview"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://www.wiley-vch.de/en" aria-label="live preview" class="link link--icon">
+                <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
           </div>
-          <div class="project">
+          <div class="project2">
             <h3>CAA 2025 Abstract</h3>
             <p class="project__description">
               Future-Proofing Heritage with ARGUS: A Multimodal Digital Twin Approach for Sustainable Preservation.
             </p>
-            <a
-              href="https://2025.caaconference.org/"
-              aria-label="live preview"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://2025.caaconference.org/" aria-label="live preview" class="link link--icon">
+                <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
           </div>
 
-          <div class="project">
+          <div class="project2">
             <h3>FLLM 2024 Review</h3>
             <p class="project__description">
             </p>
-            <a
-              href="https://fllm-conference.org/2024/"
-              aria-label="live preview"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://fllm-conference.org/2024/" aria-label="live preview" class="link link--icon">
+                <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
           </div>
           
-          <div class="project">
+          <div class="project2">
             <h3>KONKIS 2024 Abstract</h3>
             <p class="project__description">
               We present work on RL fine-tuning for improving chatbots by incorporating AI feedback scores. Our approach 
               enhances emotional support systems to predict suitable CBT techniques, develop treatment plans, and generate 
               corresponding therapeutic responses.
             </p>
-            <a
-              href="https://events.gwdg.de/event/615/"
-              aria-label="live preview"
-              class="link link--icon"
-            >
-              <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-            </a>
+            <div class="project-links">
+              <a href="https://events.gwdg.de/event/615/" aria-label="live preview" class="link link--icon">
+                <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
           </div>
           
         </div>
@@ -477,18 +483,11 @@
                 implements sensor data and AI solutions to monitor and preserve cultural 
                 heritage sites across the EU.
               </p>
-              <ul class="project__stack">
-                <li class="project__stack-item">data processing</li>
-                <li class="project__stack-item">AI solutions</li>
-                <li class="project__stack-item">cultural heritage data</li>
-              </ul>
-              <a
-                href="https://www.argus-project.eu/"
-                aria-label="live preview"
-                class="link link--icon"
-              >
-                <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-              </a>
+              <div class="project-links">
+                <a href="https://www.argus-project.eu/" aria-label="live preview" class="link link--icon">
+                  <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -505,26 +504,11 @@
                 sapiente debitis labore sed ipsam Mollitia repellat illum quod
                 unde beatae Quis
               </p>
-              <ul class="project__stack">
-                <li class="project__stack-item">SASS</li>
-                <li class="project__stack-item">TypeScript</li>
-                <li class="project__stack-item">React</li>
-              </ul>
-
-              <a
-                href="https://github.com"
-                aria-label="source code"
-                class="link link--icon"
-              >
-                <i aria-hidden="true" class="fab fa-github"></i>
-              </a>
-              <a
-                href="https://example.com"
-                aria-label="live preview"
-                class="link link--icon"
-              >
-                <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-              </a>
+              <div class="project-links">
+                <a href="https://example.com" aria-label="live preview" class="link link--icon">
+                  <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
             </div>
           </div>
         </section>
