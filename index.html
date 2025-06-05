@@ -36,7 +36,7 @@
 
         .project {
             flex: 0 0 350px; /* 固定宽度 */
-            height: 400px; /* 固定高度 */
+            height: 450px; /* 增加高度以适应内容 */
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -59,11 +59,13 @@
             margin: 0 0 16px 0;
             color: #1f2937;
             line-height: 1.4;
-            height: 75px; /* 固定标题高度 */
+            min-height: 50px; /* 确保标题有最小高度 */
+            max-height: 75px; /* 限制标题最大高度 */
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
+            flex-shrink: 0; /* 防止标题被压缩 */
         }
 
         .project__description {
@@ -73,10 +75,11 @@
             font-size: 14px;
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 4; /* 显示4行文字 */
+            -webkit-line-clamp: 6; /* 增加到6行以适应更多内容 */
             -webkit-box-orient: vertical;
-            height: 88px; /* 固定高度，大约4行 */
+            height: 132px; /* 调整高度，大约6行 */
             text-overflow: ellipsis;
+            flex-grow: 1; /* 允许描述区域伸缩 */
         }
 
         .project__stack {
@@ -86,8 +89,8 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            margin-top: auto; /* 推到底部 */
             margin-bottom: 16px;
+            flex-shrink: 0; /* 防止技术栈被压缩 */
         }
 
         .project__stack-item {
@@ -107,6 +110,7 @@
             justify-content: flex-end;
             gap: 12px;
             margin-top: auto;
+            flex-shrink: 0; /* 防止链接区域被压缩 */
         }
 
         .link {
@@ -182,7 +186,7 @@
         @media (max-width: 768px) {
             .project {
                 flex: 0 0 280px;
-                height: 380px;
+                height: 420px; /* 调整移动端高度 */
             }
             
             .nav-btn {
@@ -193,6 +197,12 @@
         @media (max-width: 480px) {
             .project {
                 flex: 0 0 260px;
+                height: 400px;
+            }
+            
+            .project__description {
+                -webkit-line-clamp: 5; /* 小屏幕上减少行数 */
+                height: 110px;
             }
         }
     </style>
@@ -350,7 +360,14 @@
                   </a>
                 </div>
               </div>
-              
+            </div>
+            
+            <button class="nav-btn next" onclick="slideProjects(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+          
+          <div class="slider-indicators" id="indicators"></div>
         </div>
       </section>
 
@@ -588,8 +605,6 @@
             prevBtn.disabled = currentSlide === 0;
             nextBtn.disabled = currentSlide >= maxSlide;
         }
-
-        // 切换描述展开/折叠 - 已移除，不再需要
 
         // 键盘导航
         document.addEventListener('keydown', (e) => {
