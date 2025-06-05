@@ -22,15 +22,18 @@
             padding: 20px;
             overflow: hidden;
         }
+
         .projects-slider {
             position: relative;
             width: 100%;
         }
+
         .projects-wrapper {
             display: flex;
             transition: transform 0.3s ease;
             gap: 20px;
         }
+
         .project {
             flex: 0 0 350px; /* 固定宽度 */
             height: 400px; /* 固定高度 */
@@ -44,10 +47,12 @@
             border: 1px solid #e5e7eb;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+
         .project:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
+
         .project h3 {
             font-size: 18px;
             font-weight: 600;
@@ -60,6 +65,7 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
         }
+
         .project__description {
             margin: 0 0 16px 0;
             color: #6b7280;
@@ -72,6 +78,7 @@
             height: 88px; /* 固定高度，大约4行 */
             text-overflow: ellipsis;
         }
+
         .project__stack {
             list-style: none;
             padding: 0;
@@ -94,21 +101,25 @@
             width: fit-content;
             align-self: flex-start;
         }
+
         .project-links {
             display: flex;
             justify-content: flex-end;
             gap: 12px;
             margin-top: auto;
         }
+
         .link {
             color: #6b7280;
             text-decoration: none;
             font-size: 18px;
             transition: color 0.2s ease;
         }
+
         .link:hover {
             color: #3b82f6;
         }
+
         /* 导航按钮 */
         .nav-btn {
             position: absolute;
@@ -127,20 +138,25 @@
             z-index: 10;
             transition: all 0.2s ease;
         }
+
         .nav-btn:hover {
             background: #f9fafb;
             border-color: #d1d5db;
         }
+
         .nav-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
+
         .nav-btn.prev {
             left: -20px;
         }
+
         .nav-btn.next {
             right: -20px;
         }
+
         /* 指示器 */
         .slider-indicators {
             display: flex;
@@ -148,6 +164,7 @@
             gap: 8px;
             margin-top: 20px;
         }
+
         .indicator {
             width: 8px;
             height: 8px;
@@ -156,19 +173,23 @@
             cursor: pointer;
             transition: background 0.2s ease;
         }
+
         .indicator.active {
             background: #3b82f6;
         }
+
         /* 响应式设计 */
         @media (max-width: 768px) {
             .project {
                 flex: 0 0 280px;
                 height: 380px;
             }
+            
             .nav-btn {
                 display: none;
             }
         }
+
         @media (max-width: 480px) {
             .project {
                 flex: 0 0 260px;
@@ -267,27 +288,24 @@
             </button>  
             
             <div class="projects-wrapper" id="projectsWrapper">
-              <div class="project">
-                <h3>A Unified Framework for Cultural Heritage Data Historicity and Migration: 
-                  The ARGUS Approach</h3>
-                <div class="project__description">
-                  We describe a systematic data processing pipeline encompassing standardization, 
-                  enrichment, integration, visualization, ingestion, and publication strategies. 
-                  The framework transforms raw, disparate datasets into standardized formats compliant 
-                  with FAIR principles.
-                  <p style="font-size: 12px; color: #9ca3af; margin-top: 8px;">(Accepted by IEEE-CH [June 2025])</p>
+                <!-- Project 1 -->
+                <div class="project">
+                    <h3>A Unified Framework for Cultural Heritage Data Historicity and Migration: The ARGUS Approach</h3>
+                    <div class="project__description">
+                        We describe a systematic data processing pipeline encompassing standardization, enrichment, integration, visualization, ingestion, and publication strategies. The framework transforms raw, disparate datasets into standardized formats compliant with FAIR principles. This comprehensive approach ensures data quality, accessibility, and long-term preservation for cultural heritage research and applications.
+                        <p style="font-size: 12px; color: #9ca3af; margin-top: 8px;">(Accepted by IEEE-CH 2025 ARGUS workshop)</p>
+                    </div>
+                    <ul class="project__stack">
+                        <li class="project__stack-item">data processing</li>
+                        <li class="project__stack-item">LLM querying</li>
+                        <li class="project__stack-item">cultural heritage data</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://www.ieee-ch.org/" aria-label="live preview" class="link">
+                            <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
                 </div>
-                <ul class="project__stack">
-                  <li class="project__stack-item">Data Processing</li>
-                  <li class="project__stack-item">LLM Querying</li>
-                  <li class="project__stack-item">Cultural Heritage Data</li>
-                </ul>
-                <div class="project-links">
-                  <a href="https://www.ieee-ch.org/" aria-label="live preview" class="link">
-                    <i aria-hidden="true" class="fas fa-external-link-alt"></i>
-                  </a>
-                </div>
-              </div>
               
               <div class="project">
                 <h3>EMORL: Ensemble Multi-Objective Reinforcement Learning for Efficient and 
@@ -571,21 +589,7 @@
             nextBtn.disabled = currentSlide >= maxSlide;
         }
 
-        // 切换描述展开/折叠
-        function toggleDescription(descId, button) {
-            const descElement = document.getElementById(descId);
-            const isCollapsed = descElement.classList.contains('collapsed');
-            
-            if (isCollapsed) {
-                descElement.classList.remove('collapsed');
-                descElement.classList.add('expanded');
-                button.textContent = 'Read less';
-            } else {
-                descElement.classList.remove('expanded');
-                descElement.classList.add('collapsed');
-                button.textContent = 'Read more';
-            }
-        }
+        // 切换描述展开/折叠 - 已移除，不再需要
 
         // 键盘导航
         document.addEventListener('keydown', (e) => {
